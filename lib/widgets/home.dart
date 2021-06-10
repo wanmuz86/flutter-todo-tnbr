@@ -26,9 +26,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(title: Text("To do list"),
       actions: [
-        IconButton(onPressed: (){
-         Navigator.push(context,
+        IconButton(onPressed: () async {
+         var result =  await Navigator.push(context,
          MaterialPageRoute(builder: (context)=> AddPage()));
+         setState(() {
+           print(result);
+           todos.add(result);
+         });
         },
             icon: Icon(Icons.add)
         )
@@ -42,11 +46,12 @@ class _HomePageState extends State<HomePage> {
               title: Text(todos[index]["name"]!),
               subtitle: Text(todos[index]["location"]!),
               trailing: Icon(Icons.chevron_right),
-              onTap: (){
-                Navigator.push(
+              onTap: () async {
+             Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context)=>DetailPage())
                 );
+
               },
             );
           }

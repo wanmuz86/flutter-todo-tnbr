@@ -35,8 +35,8 @@ class AddPage extends StatelessWidget {
                 onPressed: (){
                   var object = {
                     "name":nameEditingController.text,
-                    "location":placeEditingController,
-                  "description":descEditingController
+                    "location":placeEditingController.text,
+                  "description":descEditingController.text
                   };
                   Navigator.pop(context, object);
                 },

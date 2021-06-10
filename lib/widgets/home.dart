@@ -17,9 +17,6 @@ class _HomePageState extends State<HomePage> {
   // We declare it Map<String,type>  // type can be : String, int, dynamic...
   // We retrieve the value of Map with it's key  = map["name"]
   List<Map<String,String>> todos = [
-    {"name":"Makan", "location":"House"},
-{"name":"Beli groceries","location":"Giant"},
-    {"name":"Con call","location":"Office"}
     ];
   @override
   Widget build(BuildContext context) {
@@ -30,7 +27,7 @@ class _HomePageState extends State<HomePage> {
          var result =  await Navigator.push(context,
          MaterialPageRoute(builder: (context)=> AddPage()));
          setState(() {
-           print(result);
+
            todos.add(result);
          });
         },

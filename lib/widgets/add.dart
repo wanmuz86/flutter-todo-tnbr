@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AddPage extends StatelessWidget {
+  var nameEditingController = TextEditingController();
+  var placeEditingController = TextEditingController();
+  var descEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,16 +13,19 @@ class AddPage extends StatelessWidget {
           child: Column(
             children: [
               TextField(
+                controller: nameEditingController,
                 decoration: InputDecoration(
                   hintText: "Enter Item name"
                 ),
               ),
               TextField(
+                controller: placeEditingController,
                   decoration: InputDecoration(
                       hintText: "Enter place to do "
                   )
               ),
               TextField(
+                controller: descEditingController,
                   decoration: InputDecoration(
                       hintText: "Enter description"
                   )
@@ -27,7 +33,12 @@ class AddPage extends StatelessWidget {
               TextButton(
                 child: Text("Add"),
                 onPressed: (){
-                  Navigator.pop(context);
+                  var object = {
+                    "name":nameEditingController.text,
+                    "location":placeEditingController,
+                  "description":descEditingController
+                  };
+                  Navigator.pop(context, object);
                 },
               )
             ],

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatelessWidget {
+  final Map<String, String> todoDetail;
+
+  DetailPage({required this.todoDetail});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

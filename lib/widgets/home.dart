@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
          var result =  await Navigator.push(context,
          MaterialPageRoute(builder: (context)=> AddPage()));
          setState(() {
-
            todos.add(result);
          });
         },
@@ -46,7 +45,8 @@ class _HomePageState extends State<HomePage> {
               onTap: () async {
              Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context)=>DetailPage())
+                  MaterialPageRoute(builder: (context)=>DetailPage(todoDetail:
+                  todos[index],))
                 );
 
               },

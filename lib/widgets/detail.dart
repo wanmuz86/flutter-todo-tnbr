@@ -9,12 +9,16 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Detail page"),),
-        body:Column(
-          children: [
-            Text("Placeholder for name"),
-            Text("Placeholder for place"),
-            Text("Placeholder for notes")
-          ],
+        body:Center(
+          child: Column(
+            children: [
+              Text(todoDetail["name"]!, style: TextStyle(color: Colors.red,
+                  fontSize: 32),),
+              SizedBox(height: 8,),
+              Text(todoDetail["location"]!),
+              Text(todoDetail["description"]!)
+            ],
+          ),
         )
     );
   }

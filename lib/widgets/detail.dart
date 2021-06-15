@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatelessWidget {
-  final Map<String, String> todoDetail;
+  final dynamic todoDetail;
 
   DetailPage({required this.todoDetail});
 

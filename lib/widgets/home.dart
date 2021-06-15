@@ -81,18 +81,36 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(8),
           itemCount: todos.length,
           itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text(todos[index]["name"]!),
-              subtitle: Text(todos[index]["location"]!),
-              trailing: Icon(Icons.chevron_right),
-              onTap: () async {
-             Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>DetailPage(todoDetail:
-                  todos[index],))
-                );
+            return  Dismissible(
+              key:Key(todos[index]["name"]!),
+              onDismissed: (direction) async {
+                var tempArray = todos;
+                tempArray.removeAt(index);
+                // Encode
+                String todosString = jsonEncode(tempArray);
 
+                final prefs = await SharedPreferences.getInstance();
+                prefs.setString("todos", todosString);
+
+                setState(() {
+                  todos  = tempArray;
+                });
+
+                /// Create a toast item has been delected
               },
+              child: ListTile(
+                  title: Text(todos[index]["name"]!),
+                  subtitle: Text(todos[index]["location"]!),
+                  trailing: Icon(Icons.chevron_right),
+                  onTap: () async {
+                 Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context)=>DetailPage(todoDetail:
+                      todos[index],))
+                    );
+
+                  },
+              ),
             );
           }
       )
